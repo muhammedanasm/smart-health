@@ -1,0 +1,12 @@
+.layout-section {
+  display: grid;
+  grid-template-columns: 0.39fr 3fr;
+
+  height: 100vh;
+}
+
+@media (min-width: 1287px) and (max-width: 1500px) {
+  .layout-section {
+    grid-template-columns: 0.576fr 3fr;
+  }
+}
