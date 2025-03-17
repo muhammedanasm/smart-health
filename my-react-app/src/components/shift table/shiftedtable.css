@@ -1,0 +1,60 @@
+.shift-table-wrapper {
+  background-color: #f5f6fa;
+  padding: 24px;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+}
+
+.shift-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.shift-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.shift-table-content .ant-table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.shift-table-content .ant-table-thead > tr > th {
+  background-color: #f3f4f7;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 12px 16px;
+}
+
+.shift-table-content .ant-table-tbody > tr > td {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #4a4a4a;
+}
+
+.shift-table-content .ant-table-pagination {
+  margin-top: 16px;
+  text-align: right;
+}
+
+.shift-table-content .ant-table-tbody .anticon {
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+/* Make the table head background white */
+.shift-table-content .ant-table-thead > tr > th {
+  background-color: #ffffff !important;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 12px 16px;
+}

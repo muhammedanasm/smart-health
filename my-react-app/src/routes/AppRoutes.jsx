@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthLayout from "../layouts/AuthLayout";
 import ShiftScreen from "../components/shift/ShiftScreen";
+import ShiftTable from "../components/shift table/ShiftTable";
 
 const AppRoutes = () => {
   return (
@@ -13,7 +14,7 @@ const AppRoutes = () => {
             path="/"
             element={
               <AuthLayout>
-                <ShiftScreen />
+                <ShiftTable />
               </AuthLayout>
             }
           />
