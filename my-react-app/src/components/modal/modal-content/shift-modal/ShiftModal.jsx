@@ -1,13 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../../button/Button";
 import "./shiftmodal.css";
+import Swal from "sweetalert2";
 
-const ShiftModal = () => {
+const ShiftModal = ({ onSave, onClose, editingShift }) => {
   const [shift, setShift] = useState("");
 
+  // Pre-fill the input field if editingShift is provided
+  useEffect(() => {
+    if (editingShift) {
+      setShift(editingShift.shift || "");
+    }
+  }, [editingShift]);
+
   const handleSave = () => {
-    onSave(shift);
+    // Validate if the input field is empty
+    if (!shift.trim()) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Shift field cannot be empty!",
+      });
+      return; // Stop further execution
+    }
+    // If editing, send key + updated shift
+    if (editingShift) {
+      onSave({ key: editingShift.key, shift });
+    } else {
+      onSave(shift); // For new shift, just pass shift text
+    }
+
+    // onSave(shift);
+    Swal.close();
     onClose();
+  };
+  const handleClose = () => {
+    Swal.close(); // Close the SweetAlert modal
+    onClose(); // Call the onClose prop if needed
   };
 
   return (
@@ -24,6 +53,7 @@ const ShiftModal = () => {
         <div className="shifted-btns">
           <Button
             label={"Close"}
+            onClick={handleClose}
             customStyles={{
               background: "#6D7781",
               color: "#fff",

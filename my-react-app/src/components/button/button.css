@@ -39,6 +39,3 @@
 .btn-styles:hover::before {
   left: 100%;
 }
-.btn-icon {
-  height: 16px;
-}

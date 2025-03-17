@@ -11,7 +11,7 @@ const Sidebar = () => {
   const menuItems = [
     {
       label: "Dashboard",
-      path: "/dashboard",
+      //   path: "/dashboard",
     },
     {
       label: "Shift",
@@ -27,7 +27,7 @@ const Sidebar = () => {
     },
     {
       label: "Room Schedule",
-      path: "/room-schedule",
+      //   path: "/room-schedule",
     },
   ];
 

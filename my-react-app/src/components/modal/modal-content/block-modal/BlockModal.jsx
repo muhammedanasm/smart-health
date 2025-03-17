@@ -1,0 +1,84 @@
+import React, { useState, useEffect } from "react";
+import Button from "../../../button/Button";
+import "./blockmodal.css";
+import Swal from "sweetalert2";
+
+const BlockModal = ({ onSave, onClose, editingShift }) => {
+  const [shift, setShift] = useState("");
+
+  // Pre-fill the input field if editingShift is provided
+  useEffect(() => {
+    if (editingShift) {
+      setShift(editingShift.shift);
+    }
+  }, [editingShift]);
+
+  const handleSave = () => {
+    // Validate if the input field is empty
+    if (!shift.trim()) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Block field cannot be empty!",
+      });
+      return; // Stop further execution
+    }
+    onSave(shift);
+    Swal.close();
+    onClose();
+  };
+  const handleClose = () => {
+    Swal.close(); // Close the SweetAlert modal
+    onClose(); // Call the onClose prop if needed
+  };
+  return (
+    <div>
+      <div>
+        <div className="shift-parent">
+          <div className="new-sift">
+            <label htmlFor="">Block Name</label>
+            <input
+              type="text"
+              value={shift}
+              onChange={(e) => setShift(e.target.value)}
+            />
+          </div>
+          <div className="shifted-btns">
+            <Button
+              label={"Close"}
+              onClick={handleClose}
+              customStyles={{
+                background: "#6D7781",
+                color: "#fff",
+                fontSize: "16px",
+                borderRadius: "4px",
+                fontWeight: "400",
+                padding: "8px 20px",
+                fontFamily: "Poppins",
+                border: "none",
+                boxShadow: "none",
+              }}
+            />
+            <Button
+              label={"Save Block"}
+              onClick={handleSave}
+              customStyles={{
+                background: "#9575DE",
+                color: "#fff",
+                fontSize: "16px",
+                borderRadius: "4px",
+                fontWeight: "400",
+                padding: "8px 25px",
+                fontFamily: "Poppins",
+                border: "none",
+                boxShadow: "none",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BlockModal;

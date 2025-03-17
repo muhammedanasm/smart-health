@@ -1,0 +1,22 @@
+.new-sift {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.new-sift label {
+  text-align: left;
+  color: #2e2e2e;
+}
+.new-sift input {
+  border: 1px solid #b6b2bb;
+  padding: 10px;
+  border-radius: 4px;
+  outline: none;
+}
+.shifted-btns {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-top: 25px;
+  gap: 15px;
+}
