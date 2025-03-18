@@ -22,7 +22,14 @@ const RoomModal = ({ editingRoom, onSave, onClose }) => {
       return;
     }
 
-    onSave({ roomName, block });
+    // If editing, send key + updated room data
+    if (editingRoom) {
+      onSave({ key: editingRoom.key, roomName, block });
+    } else {
+      // For new room, send roomName and block
+      onSave({ roomName, block });
+    }
+
     Swal.close();
     onClose();
   };
@@ -123,7 +130,7 @@ const RoomModal = ({ editingRoom, onSave, onClose }) => {
             cursor: "pointer",
           }}
         >
-          Save Room
+          {editingRoom ? "Update Room" : "Save Room"}
         </button>
       </div>
     </div>

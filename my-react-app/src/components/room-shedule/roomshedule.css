@@ -1,0 +1,102 @@
+.room-shedule {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.room-shedule-head {
+  border: 1px solid #929292;
+}
+.head {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+
+  border-bottom: 1px solid #929292;
+}
+.sub-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #929292;
+}
+.days {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #929292;
+  border-top: 1px solid #929292;
+}
+.empty {
+  padding: 10px;
+  border-right: 1px solid #929292;
+}
+.day {
+  border-right: 1px solid #929292;
+  border-bottom: 1px solid #929292;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.day p {
+  border-right: 1px solid #929292;
+  padding: 10px;
+}
+.day p:nth-child(1) {
+  background: #929292;
+  color: #000;
+  text-align: center;
+}
+.rooms-head {
+  background: #929292;
+  color: #000;
+  text-align: center;
+}
+.rooms-head {
+  padding: 10px;
+  border-right: 1px solid #929292;
+}
+.old-building {
+  padding: 10px;
+  border-right: 1px solid #929292;
+}
+.new-building {
+  padding: 10px;
+  border-right: 1px solid #929292;
+}
+.table-parent {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; */
+}
+.room1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #929292;
+}
+.room1 p {
+  padding: 10px;
+  border-right: 1px solid #929292;
+}
+.room2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #929292;
+}
+.room3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #929292;
+}
+.room2 p {
+  padding: 10px;
+  border-right: 1px solid #929292;
+}
+.room3 p {
+  padding: 10px;
+  border-right: 1px solid #929292;
+}
+.yellow {
+  background: #e0e340;
+}
+.greeen {
+  background: #69ce52;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}

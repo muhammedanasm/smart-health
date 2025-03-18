@@ -27,7 +27,7 @@ const Sidebar = () => {
     },
     {
       label: "Room Schedule",
-      //   path: "/room-schedule",
+      path: "/roomshedule",
     },
   ];
 

@@ -67,7 +67,7 @@ const ShiftModal = ({ onSave, onClose, editingShift }) => {
             }}
           />
           <Button
-            label={"Save Shift"}
+            label={editingShift ? "Update Shift" : "Save Shift"}
             onClick={handleSave}
             customStyles={{
               background: "#9575DE",

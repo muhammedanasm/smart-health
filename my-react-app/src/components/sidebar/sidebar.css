@@ -3,7 +3,8 @@
 .sidebar-container {
   width: 250px;
   background-color: #2d2d3d; /* dark sidebar background */
-  height: 100vh;
+  /* height: 100vh; */
+  height: 100%;
   color: white;
   padding: 20px;
   box-sizing: border-box;

@@ -21,18 +21,20 @@ const Room = () => {
     setDataSource(storedRooms);
   }, []);
 
-  const handleSaveRoom = (roomData) => {
+  const handleSaveRoom = (newRoom) => {
     let updatedRooms;
-    if (editingRoom) {
+
+    if (newRoom?.key) {
+      // Editing
       updatedRooms = dataSource.map((room) =>
-        room.key === editingRoom.key ? { ...room, ...roomData } : room
+        room.key === newRoom.key
+          ? { ...room, roomName: newRoom.roomName, block: newRoom.block }
+          : room
       );
-      setEditingRoom(null);
+      setEditingRoom(null); // Reset editing state
     } else {
-      const newRoomData = {
-        key: Date.now().toString(),
-        ...roomData,
-      };
+      // New room
+      const newRoomData = { key: Date.now().toString(), ...newRoom };
       updatedRooms = [...dataSource, newRoomData];
     }
 
@@ -47,18 +49,21 @@ const Room = () => {
   };
 
   const handleEditRoom = (record) => {
+    console.log("records", record);
     setEditingRoom(record);
     openModal(record);
   };
 
-  const openModal = (record = null) => {
+  const openModal = (roomToEdit = null) => {
+    setEditingRoom(roomToEdit); // ✅ Set it here
     CustomModal({
-      title: <Layout label={record ? "Edit Room" : "Add New Room"} />,
+      title: <Layout label={roomToEdit ? "Edit Room" : "Add New Room"} />,
       content: (
         <RoomModal
-          editingRoom={record}
+          editingRoom={roomToEdit}
           onSave={handleSaveRoom}
           onClose={() => setEditingRoom(null)}
+          editingShift={roomToEdit}
         />
       ),
       width: "500px",
@@ -68,7 +73,7 @@ const Room = () => {
 
   const handleCreateNewRoom = () => {
     setEditingRoom(null);
-    openModal();
+    openModal(null);
   };
 
   const handleEntryChange = (value) => {
@@ -93,16 +98,24 @@ const Room = () => {
     {
       title: "Action",
       key: "action",
+      width: 200,
       render: (_, record) => (
         <div style={{ display: "flex", gap: "10px" }}>
           <Button
             icon={<EditOutlined />}
             onClick={() => handleEditRoom(record)}
+            customStyles={{
+              borderRadius: "30px",
+            }}
           />
           <Button
             icon={<DeleteOutlined />}
             danger
             onClick={() => handleDeleteRoom(record.key)}
+            customStyles={{
+              borderRadius: "30px",
+              color: "red",
+            }}
           />
         </div>
       ),

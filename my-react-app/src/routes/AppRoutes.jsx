@@ -5,6 +5,7 @@ import ShiftScreen from "../components/shift/ShiftScreen";
 import ShiftTable from "../components/shift table/ShiftTable";
 import Blocks from "../components/blocks/Blocks";
 import Room from "../components/rooms/Room";
+import RoomSchedule from "../components/room-shedule/RoomShedule";
 
 const AppRoutes = () => {
   return (
@@ -33,6 +34,14 @@ const AppRoutes = () => {
             element={
               <AuthLayout>
                 <Room />
+              </AuthLayout>
+            }
+          />
+          <Route
+            path="/roomshedule"
+            element={
+              <AuthLayout>
+                <RoomSchedule />
               </AuthLayout>
             }
           />

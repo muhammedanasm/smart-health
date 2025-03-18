@@ -23,7 +23,13 @@ const BlockModal = ({ onSave, onClose, editingShift }) => {
       });
       return; // Stop further execution
     }
-    onSave(shift);
+    // If editing, send key + updated shift
+    if (editingShift) {
+      onSave({ key: editingShift.key, shift });
+    } else {
+      onSave(shift); // For new shift, just pass shift text
+    }
+    // onSave(shift);
     Swal.close();
     onClose();
   };
@@ -60,7 +66,7 @@ const BlockModal = ({ onSave, onClose, editingShift }) => {
               }}
             />
             <Button
-              label={"Save Block"}
+              label={editingShift ? "Update Block" : "Save Block"}
               onClick={handleSave}
               customStyles={{
                 background: "#9575DE",

@@ -24,15 +24,19 @@ const Blocks = () => {
   }, []);
   const handleSaveShift = (newShift) => {
     let updatedShifts;
-    if (editingShift) {
+
+    if (newShift?.key) {
+      // Editing
       updatedShifts = dataSource.map((shift) =>
-        shift.key === editingShift.key ? { ...shift, shift: newShift } : shift
+        shift.key === newShift.key ? { ...shift, shift: newShift.shift } : shift
       );
       setEditingShift(null);
     } else {
+      // New shift
       const newShiftData = { key: Date.now().toString(), shift: newShift };
       updatedShifts = [...dataSource, newShiftData];
     }
+
     setDataSource(updatedShifts);
     localStorage.setItem("blocks", JSON.stringify(updatedShifts));
     setIsModalVisible(false);
@@ -45,17 +49,20 @@ const Blocks = () => {
   };
 
   const handleEditShift = (record) => {
+    console.log("records", record);
     setEditingShift(record);
-    openModal();
+    openModal(record);
   };
 
-  const openModal = () => {
+  const openModal = (shiftToEdit = null) => {
+    setEditingShift(shiftToEdit); // ✅ Set it here
     CustomModal({
       title: <Layout label={editingShift ? "Edit Blocks" : "Add New Blocks"} />,
       content: (
         <BlockModal
           onSave={handleSaveShift}
           onClose={() => setIsModalVisible(false)}
+          editingShift={shiftToEdit}
         />
       ),
       width: "400px",
@@ -65,12 +72,12 @@ const Blocks = () => {
 
   const CreateNewShift = () => {
     setEditingShift(null); // Reset editing shift
-    openModal();
+    openModal(null);
   };
 
   const columns = [
     {
-      title: "Shift",
+      title: "Blocks",
       dataIndex: "shift",
       key: "shift",
     },
@@ -91,17 +98,24 @@ const Blocks = () => {
         >
           <Button
             type="text"
-            shape="circle"
             icon={<EditOutlined style={{ color: "#595959" }} />}
             style={{ backgroundColor: "#D1D6E270" }}
             onClick={() => handleEditShift(record)}
+            customStyles={{
+              borderRadius: "30px",
+              padding: "10px 10px 10px 15px",
+            }}
           />
           <Button
             type="text"
-            shape="circle"
             icon={<DeleteOutlined style={{ color: "#DF8787" }} />}
             style={{ backgroundColor: "#D1D6E270" }}
             onClick={() => handleDeleteShift(record.key)}
+            customStyles={{
+              borderRadius: "30px",
+              padding: "10px 10px 10px 15px",
+              color: "red",
+            }}
           />
         </div>
       ),
